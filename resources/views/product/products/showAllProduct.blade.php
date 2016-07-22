@@ -137,11 +137,9 @@
                 <button type="button" class="btn btn-success" data-dismiss="modal">
                     <img class="img_button_icon" src="/img/system/back-arrow.png" alt=""/>Продолжить покупки
                 </button>
-                <a href="/cart">
-                    <button type="button" class="btn btn-danger">
+                    <button type="button" class="btn btn-danger go_cart">
                         <img class="img_button_icon" src="/img/system/shopping-cart-button.png" alt=""/> Перейти в корзину
                     </button>
-                </a>
             </div>
         </div>
     </div>

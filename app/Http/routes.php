@@ -10,7 +10,10 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-Route::get('/test', ['uses'=>'HomeController@test']);
+Route::get('/test', function()
+{
+    return view('test');
+});
 
 /*-------------------------------------------Index----------------------------------------------*/
 Route::get('/', 'IndexController@Index');
@@ -26,6 +29,7 @@ Route::get('/get-city-by-region/{id}', 'LocationController@getCityByRegion');
 /*---------------------------------CompanyController------------------------------------*/
 Route::any('/show-company/{id}', 'CompanyController@show');
 Route::any('/company-content', ['as' => 'company-content', 'uses' => 'CompanyController@companyContent']);
+Route::get('/my_shops', ['as' => 'my_shops', 'uses' => 'CompanyController@getMyShop']);
 Route::group(['middleware' => ['web']], function () {
     Route::resource('company', 'CompanyController');
 });
@@ -123,4 +127,7 @@ Route::post('/new-user-dashboard', ['as'=>'set_user_role', 'uses'=>'UserControll
 /*-------------------------------------------Order--------------------------------------------*/
 Route::post('/order', [ 'as' => 'order', 'uses' => 'OrderController@createOrder' ]);
 Route::post('/order-ready', [ 'as' => 'order-ready', 'uses' => 'OrderController@ready' ]);
+/*---------------------------------------Status----------------------------------*/
+Route::get('/change-status/{id}', 'CompanyController@changStatus');
+
 

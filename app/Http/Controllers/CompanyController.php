@@ -6,6 +6,7 @@ use App\Category;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Company;
+use App\StatusOwner;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Session;
@@ -170,6 +171,20 @@ class CompanyController extends Controller
         return ([
             'companyAll' => $companyAll
         ]);
+    }
+    public function getMyShop(Request $request){
+        $curentUser = Auth::user();
+        $companys =$curentUser->getCompanies;
+        return view('company.myShop')
+            ->with('companys', $companys);
+    }
+    public function showOrder(){
+
+        $status = StatusOwner::get();
+    }
+    public function changStatus(Request $request, $id){
+        $status = StatusOwner::find($id);
+        dd($status);
     }
 
 
