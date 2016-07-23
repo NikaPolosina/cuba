@@ -127,7 +127,9 @@ Route::post('/new-user-dashboard', ['as'=>'set_user_role', 'uses'=>'UserControll
 /*-------------------------------------------Order--------------------------------------------*/
 Route::post('/order', [ 'as' => 'order', 'uses' => 'OrderController@createOrder' ]);
 Route::post('/order-ready', [ 'as' => 'order-ready', 'uses' => 'OrderController@ready' ]);
+Route::get('/show-order/{id}', 'OrderController@showOrder');
+Route::get('/change-order-status/{order}/{status}', ['as'=>'change_order_status', 'uses'=>'OrderController@changStatus']);
+
 /*---------------------------------------Status----------------------------------*/
-Route::get('/change-status/{id}', 'CompanyController@changStatus');
 
 

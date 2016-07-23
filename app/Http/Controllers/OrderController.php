@@ -80,7 +80,7 @@ class OrderController extends Controller{
             $currentProduct->total = $currentProduct->product_price*$currentProduct->cnt;
             $total = $total+$currentProduct->total;
         }
-        $satus = StatusOwner::where('key', '=', 'details')->get();
+        $satus = StatusOwner::where('key', '=', 'not_processed')->get();
         $cart = $request->cookie('cart');
 
         DB::beginTransaction();
@@ -128,5 +128,20 @@ class OrderController extends Controller{
         }
 
         return response()->view('order.ready')->withCookie(cookie('cart', $cart));
+    }
+    public function showOrder($id){
+        $company = Company::find($id);
+        $order  = $company->getOrder()->with('getStatusOwner')->get();
+        $status = StatusOwner::get();
+        return view('order.orderListShop')
+            ->with('company', $company)
+            ->with('order', $order)
+            ->with('status', $status);
+    }
+
+
+    public function changStatus($order, $status_id){
+        $status = StatusOwner::find($status_id);
+        dd($status);
     }
 }

@@ -129,6 +129,8 @@ $('#modal_add_product_cart').delegate('.go_cart', 'click', function (e) {
                 window.location = '/cart';
             }
         });
+    }else{
+        window.location = '/cart';
     }
 });
 

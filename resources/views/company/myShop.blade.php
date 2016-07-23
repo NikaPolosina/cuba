@@ -12,7 +12,7 @@
                 <div class="portlet-title">
                     <div class="caption font-dark">
                         <i class="icon-settings font-dark"></i>
-                        <span class="caption-subject bold uppercase"> Список Моих Магазинов</span>
+                        <span class="caption-subject bold uppercase" style="color: darkblue;"> Список Моих Магазинов</span>
                     </div>
 
                 </div>
@@ -21,11 +21,11 @@
                     <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
                         <thead>
                             <tr>
-                                <th> # </th>
-                                <th> Имя </th>
+                                <th> № </th>
+                                <th> Имя Магазина</th>
                                 <th> Описание </th>
                                 <th> Арес </th>
-                                <th> Заказ </th>
+                                <th width="30"> Новые заказы </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -34,11 +34,11 @@
                             {{-- */$x++;/* --}}
                             <tr class="odd gradeX">
                                 <td> {{ $x }} </td>
-                                <td><a href="/show-company/{{$item->id}}"> {{$item->company_name}}</a></td>
+                                <td><a href="/show-order/{{$item->id}}"> {{$item->company_name}}</a></td>
                                 <td> {{$item->company_description}} </td>
                                 <td> {{$item->street}} {{$item->address}}</td>
-                                <td>
-                                     <span class="badge">4</span>
+                                <td align="center">
+                                     <span class="badge">@if(count($item->getOrder) > 0){{count($item->getOrder)}}@endif</span>
                                 </td>
 
                             </tr>
@@ -51,8 +51,11 @@
         </div>
     </div>
     <style>
+
         .badge{
-            background-color: red
+            background-color: red;
+            text-align: center;
+
         }
 
     </style>

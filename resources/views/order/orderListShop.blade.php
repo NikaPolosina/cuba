@@ -12,7 +12,7 @@
                 <div class="portlet-title">
                     <div class="caption font-dark">
                         <i class="icon-settings font-dark"></i>
-                        <span class="caption-subject bold uppercase"> Список Моих Магазинов</span>
+                        <span class="caption-subject bold uppercase" style="color: darkblue"> Список Заказов</span>
                     </div>
 
                 </div>
@@ -22,40 +22,43 @@
                         <thead>
                         <tr>
                             <th> # </th>
-                            <th> Имя </th>
-                            <th> Описание </th>
-                            <th> Арес </th>
+                            <th> Покупатель </th>
+                            <th> Номер телефона </th>
+                            <th> Адресс доставки </th>
+                            <th> Сумма заказа </th>
                             <th> Статус </th>
-                            <th> Заказ </th>
                         </tr>
                         </thead>
                         <tbody>
                         {{-- */$x=0;/* --}}
-                        @foreach($companys as $item)
+
+
+                        @foreach($order as $item)
+
                             {{-- */$x++;/* --}}
                             <tr class="odd gradeX">
                                 <td> {{ $x }} </td>
-                                <td><a href="/show-company/{{$item->id}}"> {{$item->company_name}}</a></td>
-                                <td> {{$item->company_description}} </td>
+                                <td><a href="/show-company/{{$item->id}}"> {{$item->name}} {{$item->surname}}</a></td>
+                                <td> {{$item->order_phone}}</td>
+
                                 <td> {{$item->street}} {{$item->address}} </td>
+                                <td> {{$item->total_price}} <span> руб.</span> </td>
+
                                 <td>
                                     <div class="btn-group">
-                                        <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> Действия
+                                        <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false"> {{$item->getStatusOwner->title}}
                                             <i class="fa fa-angle-down"></i>
                                         </button>
                                         <ul class="dropdown-menu" role="menu">
                                             @foreach($status as $st)
                                                 <li>
-                                                    <a href="/change-status/{{ $st->id}}">
+                                                    <a href="{{route('change_order_status', [$item->id, $st->id])}}">
                                                         <i class="icon-docs"></i>{{ $st->title}} </a>
                                                 </li>
                                             @endforeach
 
                                         </ul>
                                     </div>
-                                </td>
-                                <td>
-                                    <span class="badge">4</span>
                                 </td>
 
                             </tr>

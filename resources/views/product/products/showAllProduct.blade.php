@@ -208,7 +208,7 @@
 
                         </div>
                         <div class="product_navigation">
-                            <button class="btn btn-success">В корзину</button>
+                            <button class="btn btn-success ">В корзину</button>
 
                             @if(!Auth::guest())
                             <span class="like"></span>
