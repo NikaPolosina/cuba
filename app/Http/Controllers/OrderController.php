@@ -57,6 +57,7 @@ class OrderController extends Controller{
     }
     public function ready(Request $request){
 
+
         $this->validate($request, [ 'company_id' => 'required',
                                     'name' => 'required',
                                     'surname' => 'required',
@@ -105,6 +106,7 @@ class OrderController extends Controller{
                     'order_id'         => $order->id ,
                 ]);
             }
+            $company->getOrder()->save($order);
             DB::commit();
 
             if(array_key_exists($company['id'], $cart) && count($cart[$company['id']]['products'])){

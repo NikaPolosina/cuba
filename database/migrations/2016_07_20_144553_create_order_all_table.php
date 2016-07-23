@@ -46,6 +46,18 @@ class CreateOrderAllTable extends Migration
             $table->integer('order_id');
             $table->timestamps();
         });
+        Schema::create('company_order', function (Blueprint $table) {
+            $table->integer('company_id')->unsigned();
+            $table->integer('order_id')->unsigned();
+            $table->foreign('company_id')
+                ->references('id')->on('companies')
+                ->onDelete('cascade');
+            $table->foreign('order_id')
+                ->references('id')->on('order')
+                ->onDelete('cascade');
+
+
+        });
     }
 
     /**
@@ -58,5 +70,7 @@ class CreateOrderAllTable extends Migration
         Schema::drop('status_owner');
         Schema::drop('order');
         Schema::drop('product_order');
+        Schema::drop('company_order');
+
     }
 }
