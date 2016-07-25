@@ -105,6 +105,7 @@ $('.item_class_3').find('.item_class_4').find('.product_navigation').delegate('s
 
 });
 
+
 $('#modal_add_product_cart').delegate('.go_cart', 'click', function (e) {
     e.preventDefault();
     var cnt = $('#modal_add_product_cart').find('input.my_b').val();
@@ -133,6 +134,7 @@ $('#modal_add_product_cart').delegate('.go_cart', 'click', function (e) {
         window.location = '/cart';
     }
 });
+
 
 $('#modal_add_product_cart').on('hide.bs.modal', function (e) {
     var cnt = $('#modal_add_product_cart').find('input.my_b').val();

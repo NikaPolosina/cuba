@@ -46,6 +46,7 @@ class CreateOrderAllTable extends Migration
             $table->integer('order_id');
             $table->timestamps();
         });
+
         Schema::create('company_order', function (Blueprint $table) {
             $table->integer('company_id')->unsigned();
             $table->integer('order_id')->unsigned();
@@ -71,6 +72,5 @@ class CreateOrderAllTable extends Migration
         Schema::drop('order');
         Schema::drop('product_order');
         Schema::drop('company_order');
-
     }
 }

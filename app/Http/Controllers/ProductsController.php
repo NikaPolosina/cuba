@@ -253,7 +253,9 @@ class ProductsController extends Controller{
         ]);
     }
 
+
     public function singleProduct(Request $request, CategoryController $category, $id){
+
 
 
         $singleProduct = Product::find($id)->toArray();
@@ -307,7 +309,9 @@ class ProductsController extends Controller{
             ->with('singleProduct', $singleProduct)
             ->with('firstFile', $firstFile)
             ->with('singleFile', $singleFile)
+
             ->with('category', $category->getAllCategoris())
+
             ->with('companyId', $companyId);
     }
 

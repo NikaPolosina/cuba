@@ -21,8 +21,10 @@ class Company extends Model{
     public function getUser(){
         return $this->belongsToMany('App\User');
     }
+
     public function getOrder(){
         return $this->belongsToMany('App\Order');
     }
+
 
 }

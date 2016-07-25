@@ -137,9 +137,12 @@
                 <button type="button" class="btn btn-success" data-dismiss="modal">
                     <img class="img_button_icon" src="/img/system/back-arrow.png" alt=""/>Продолжить покупки
                 </button>
+
                     <button type="button" class="btn btn-danger go_cart">
                         <img class="img_button_icon" src="/img/system/shopping-cart-button.png" alt=""/> Перейти в корзину
                     </button>
+
+
             </div>
         </div>
     </div>
@@ -208,7 +211,9 @@
 
                         </div>
                         <div class="product_navigation">
+
                             <button class="btn btn-success ">В корзину</button>
+
 
                             @if(!Auth::guest())
                             <span class="like"></span>

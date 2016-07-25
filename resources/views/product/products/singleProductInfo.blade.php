@@ -4,6 +4,7 @@
 @section('content')
     @include('layouts.header_menu')
 
+
     <div class="row row_row">
 
         @include('layouts.category_menu', $category)
@@ -516,9 +517,11 @@
 
                         </div>
 
+
                     </div>
                 </div>
             </div>
+
                             </div>
                         </div>
                         </div>
@@ -577,6 +580,7 @@
                 </div>
             </div>
         </div>
+
 
 @endsection
 
